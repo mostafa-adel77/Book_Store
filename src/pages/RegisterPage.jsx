@@ -11,16 +11,23 @@ export default function RegisterPage() {
   const navigate = useNavigate();
   const url = "https://bookstore.eraasoft.pro/api/register";
   const handleRegister = (values) => {
+    let dataSend={
+     first_name:values.first_name,
+     last_name:values.last_name,
+     email:values.email,
+     password:values.password,
+     password_confirmation:values.password_confirmation,
+    }
     axios
-      .post(url, values)
+      .post(url, dataSend)
       .then((res) => {
         console.log(res);
         toast.success("Login successful");
         navigate("/login");
       })
       .catch((err) => {
-        console.log("STATUS:", err.response?.status);
-        console.log("ERROR DATA:", err.response?.data);
+        console.log(err.response?.status);
+        console.log(err.response?.data);
       });
   };
   const validationSchema = Yup.object({
@@ -54,6 +61,7 @@ export default function RegisterPage() {
                   email: "",
                   password: "",
                   password_confirmation: "",
+                  ischecked:false,
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values) => handleRegister(values)}
@@ -135,6 +143,7 @@ export default function RegisterPage() {
                   <label className="flex items-center gap-2">
                     <Field
                       type="checkbox"
+                      name="ischecked"
                       className="w-4 h-4 accent-move cursor-pointer"
                     />
                     Agree with

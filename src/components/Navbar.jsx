@@ -1,5 +1,5 @@
 import bookBookmark from "../assets/images/book-bookmark 1.png";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Navbar() {
   const navigate = useNavigate();
@@ -14,12 +14,12 @@ export default function Navbar() {
             src={bookBookmark}
             alt=""
           />
-          <p className="font-normal">Bookshop</p>
+          <Link to="/" className="font-normal">Bookshop</Link>
         </div>
         <div className="flex items-center gap-10">
-          <p className="font-semibold text-[18px]">Home</p>
-          <p className="font-semibold text-[18px]">Books</p>
-          <p className="font-semibold text-[18px]">About Us</p>
+          <Link to="/" className="font-semibold text-[18px]">Home</Link>
+          <Link to="/books" className="font-semibold text-[18px]">Books</Link>
+          <Link to="/aboutus" className="font-semibold text-[18px]">About Us</Link>
         </div>
       </div>
     </>

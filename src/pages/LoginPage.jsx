@@ -9,22 +9,26 @@ import axios from "axios";
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
+  const url = "https://bookstore.eraasoft.pro/api/login";
   const values = {
     email: "",
     password: "",
+    ischecked: false,
   };
-
-  const domain = "https://bookstore.eraasoft.pro/api";
   const handleLogin = (values) => {
+    let dataSend = {
+      email: values.email,
+      password: values.password,
+    };
     axios
-      .post(domain + "/login", values)
+      .post(url, dataSend)
       .then((res) => {
         console.log(res);
         toast.success("Login successful");
       })
       .catch((err) => {
-        console.log("STATUS:", err.response?.status);
-        console.log("ERROR DATA:", err.response?.data);
+        console.log(err.response?.status);
+        console.log(err.response?.data);
       });
   };
   const validationSchema = Yup.object({
@@ -82,13 +86,14 @@ export default function LoginPage() {
                     <label className="flex items-center gap-3">
                       <Field
                         type="checkbox"
+                        name="ischecked"
                         className="w-4 h-4 accent-move cursor-pointer"
                       />
                       Remember Me
                     </label>
-                    <p className="text-[16px] text-move font-normal">
+                    <Link to="/forgetPassword" className="text-[16px] text-move font-normal">
                       Forget password?
-                    </p>
+                    </Link>
                   </div>
                   <button
                     type="submit"
