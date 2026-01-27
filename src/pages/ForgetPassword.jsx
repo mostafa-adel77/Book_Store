@@ -32,7 +32,7 @@ export default function ForgetPassword() {
       <HeroSection />
       <section className="w-full flex flex-col items-center bg-creamy">
         <div className="container flex justify-center">
-          <div className="w-xl flex flex-col items-center py-15 gap-10">
+          <div className="w-xl flex flex-col items-center py-15 gap-10 px-3">
             <div className="flex flex-col gap-4">
               <h1 className="text-move text-[16px] font-semibold text-center">
                 Forget Password?

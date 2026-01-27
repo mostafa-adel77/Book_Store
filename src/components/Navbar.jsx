@@ -6,7 +6,6 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="flex gap-12">
         <div className="flex items-center gap-3">
           <img
             onClick={() => navigate("/")}
@@ -16,6 +15,7 @@ export default function Navbar() {
           />
           <Link to="/" className="font-normal">Bookshop</Link>
         </div>
+      <div className="hidden md:flex gap-12">
         <div className="flex items-center gap-10">
           <Link to="/" className="font-semibold text-[18px]">Home</Link>
           <Link to="/books" className="font-semibold text-[18px]">Books</Link>

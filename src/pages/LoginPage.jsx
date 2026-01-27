@@ -4,11 +4,12 @@ import { FcGoogle } from "react-icons/fc";
 import facebook from "../assets/images/facebook.png";
 import Footer from "../components/Footer";
 import * as Yup from "yup";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
   const url = "https://bookstore.eraasoft.pro/api/login";
   const values = {
     email: "",
@@ -25,10 +26,11 @@ export default function LoginPage() {
       .then((res) => {
         console.log(res);
         toast.success("Login successful");
+        navigate("/");
       })
-      .catch((err) => {
-        console.log(err.response?.status);
-        console.log(err.response?.data);
+      .catch(() => {
+        toast.error("This User is Not Sign Up");
+        navigate("/register");
       });
   };
   const validationSchema = Yup.object({
@@ -41,9 +43,9 @@ export default function LoginPage() {
   return (
     <>
       <HeroSection />
-      <section className="bg-creamy flex flex-col items-center">
+      <section className="bg-creamy flex flex-col items-center ">
         <div className="container flex justify-center py-15">
-          <div className="flex flex-col gap-10 w-xl">
+          <div className="flex flex-col gap-10 w-xl px-3">
             <h1 className="font-semibold text-[16px] text-move text-center">
               Welcome Back!
             </h1>
@@ -91,7 +93,10 @@ export default function LoginPage() {
                       />
                       Remember Me
                     </label>
-                    <Link to="/forgetPassword" className="text-[16px] text-move font-normal">
+                    <Link
+                      to="/forgetPassword"
+                      className="text-[16px] text-move font-normal"
+                    >
                       Forget password?
                     </Link>
                   </div>

@@ -25,9 +25,8 @@ export default function RegisterPage() {
         toast.success("Login successful");
         navigate("/login");
       })
-      .catch((err) => {
-        console.log(err.response?.status);
-        console.log(err.response?.data);
+      .catch(() => {
+        toast.error("Register Is Not successful");
       });
   };
   const validationSchema = Yup.object({
@@ -41,7 +40,7 @@ export default function RegisterPage() {
       .email("Invalid email address")
       .required("Email is required"),
     password: Yup.string()
-      .min(6, "Password must be at least 6 characters")
+      .min(4, "Password must be at least 4 characters")
       .required("Password is required"),
     password_confirmation: Yup.string()
       .oneOf([Yup.ref("password"), null], "Passwords must match")
@@ -52,7 +51,7 @@ export default function RegisterPage() {
       <HeroSection />
       <section className="bg-creamy flex flex-col items-center">
         <div className="container flex justify-center py-15">
-          <div className="flex flex-col gap-10 w-xl">
+          <div className="w-full flex flex-col gap-10 md:w-xl p-3">
             <div className="flex flex-col text-black">
               <Formik
                 initialValues={{

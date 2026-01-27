@@ -4,8 +4,10 @@ import HeroSection from "../components/HeroSection";
 import * as Yup from "yup";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 export default function ResetPassword() {
+  const navigate = useNavigate();
   const validationSchema = Yup.object({
     email: Yup.string()
       .required("Email is required")
@@ -42,17 +44,16 @@ export default function ResetPassword() {
       .then((res) => {
         console.log(res);
         toast.success(res.data.message);
+        navigate("/login");
       })
-      .catch((err) => {
-        console.log(err);
-      });
+      .catch(() => {});
   };
   return (
     <>
       <HeroSection />
       <section className="w-full flex flex-col items-center bg-creamy">
         <div className="container flex justify-center">
-          <div className="w-xl flex flex-col items-center py-15 gap-10">
+          <div className="w-xl flex flex-col items-center py-15 gap-10 px-3">
             <div className="flex flex-col gap-4">
               <h1 className="text-move text-[16px] font-semibold text-center">
                 Create new password!

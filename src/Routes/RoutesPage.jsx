@@ -13,7 +13,7 @@ export default function RoutesPage() {
       <Route path="/" element={<Homepage />} />
       <Route path="books" element={<BooksPage />} />
       <Route path="aboutus" element={<AboutPage />} />
-      <Route path="login" element={<LoginPage />} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="register" element={<RegisterPage />} />
       <Route path="forgetPassword" element={<ForgetPassword />} />
       <Route path="resetPassword" element={<ResetPassword />} />
