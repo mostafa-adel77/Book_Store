@@ -5,7 +5,16 @@ import vector1 from "../assets/images/Vector (1).png";
 import BestSeller from "../components/BestSeller";
 import RecomendedForYou from "../components/RecomendedForYou";
 import FlashSale from "../components/FlashSale";
-export default function Homepage() {
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+export default function HomeBeforeLogin() {
+  const navigate = useNavigate();
+  useEffect(() => {
+    const jwt = JSON.parse(localStorage.getItem("token"));
+    if (jwt) {
+      navigate("/HomeAfterLogin");
+    }
+  }, []);
   return (
     <>
       <section className="w-full flex justify-center bg-creamy">

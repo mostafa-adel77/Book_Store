@@ -5,8 +5,9 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-
+import { useEffect } from "react";
 export default function LoginPage() {
+  const tokenLocal = localStorage.getItem("token");
   const navigate = useNavigate();
   const url = "https://bookstore.eraasoft.pro/api/login";
   const values = {
@@ -22,22 +23,29 @@ export default function LoginPage() {
     axios
       .post(url, dataSend)
       .then((res) => {
-        console.log(res);
+        const token = res.data.data.token;
+        localStorage.setItem("token", JSON.stringify(token));
         toast.success("Login successful");
-        navigate("/");
+        navigate("/HomeAfterLogin");
       })
       .catch(() => {
         toast.error("This User is Not Sign Up");
         navigate("/register");
       });
   };
+  useEffect(() => {
+    const jwt = JSON.parse(localStorage.getItem("token"));
+    if (jwt) {
+      navigate("/HomeAfterLogin");
+    }
+  }, []);
+
   const validationSchema = Yup.object({
     email: Yup.string()
       .required("Email is required")
       .email("Invalid email format"),
     password: Yup.string().required("password is required"),
   });
-
   return (
     <>
       <section className="bg-creamy flex flex-col items-center ">

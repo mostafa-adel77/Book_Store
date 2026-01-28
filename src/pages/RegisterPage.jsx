@@ -5,28 +5,30 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
 export default function RegisterPage() {
   const navigate = useNavigate();
   const url = "https://bookstore.eraasoft.pro/api/register";
   const handleRegister = (values) => {
-    let dataSend={
-     first_name:values.first_name,
-     last_name:values.last_name,
-     email:values.email,
-     password:values.password,
-     password_confirmation:values.password_confirmation,
-    }
+    let dataSend = {
+      first_name: values.first_name,
+      last_name: values.last_name,
+      email: values.email,
+      password: values.password,
+      password_confirmation: values.password_confirmation,
+    };
     axios
       .post(url, dataSend)
       .then((res) => {
         console.log(res);
-        toast.success("Login successful");
+        toast.success("Register successful");
         navigate("/login");
       })
       .catch(() => {
         toast.error("Register Is Not successful");
       });
   };
+
   const validationSchema = Yup.object({
     first_name: Yup.string()
       .min(2, "First name is too short")
@@ -44,6 +46,13 @@ export default function RegisterPage() {
       .oneOf([Yup.ref("password"), null], "Passwords must match")
       .required("Confirm your password"),
   });
+
+  useEffect(() => {
+    const jwt = JSON.parse(localStorage.getItem("token"));
+    if (jwt) {
+      navigate("/HomeAfterLogin");
+    }
+  }, []);
   return (
     <>
       <section className="bg-creamy flex flex-col items-center">
@@ -57,7 +66,7 @@ export default function RegisterPage() {
                   email: "",
                   password: "",
                   password_confirmation: "",
-                  ischecked:false,
+                  ischecked: false,
                 }}
                 validationSchema={validationSchema}
                 onSubmit={(values) => handleRegister(values)}
