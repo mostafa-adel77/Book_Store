@@ -1,6 +1,4 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import Footer from "../components/Footer";
-import HeroSection from "../components/HeroSection";
 import * as Yup from "yup";
 import axios from "axios";
 import toast from "react-hot-toast";
@@ -50,7 +48,6 @@ export default function ResetPassword() {
   };
   return (
     <>
-      <HeroSection />
       <section className="w-full flex flex-col items-center bg-creamy">
         <div className="container flex justify-center">
           <div className="w-xl flex flex-col items-center py-15 gap-10 px-3">
@@ -145,7 +142,6 @@ export default function ResetPassword() {
             </Formik>
           </div>
         </div>
-        <Footer />
       </section>
     </>
   );

@@ -1,8 +1,6 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import HeroSection from "../components/HeroSection";
 import { FcGoogle } from "react-icons/fc";
 import facebook from "../assets/images/facebook.png";
-import Footer from "../components/Footer";
 import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -42,7 +40,6 @@ export default function LoginPage() {
 
   return (
     <>
-      <HeroSection />
       <section className="bg-creamy flex flex-col items-center ">
         <div className="container flex justify-center py-15">
           <div className="flex flex-col gap-10 w-xl px-3">
@@ -128,7 +125,6 @@ export default function LoginPage() {
             </div>
           </div>
         </div>
-        <Footer />
       </section>
     </>
   );
