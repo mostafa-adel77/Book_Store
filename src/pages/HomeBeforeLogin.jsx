@@ -10,7 +10,7 @@ import { useNavigate } from "react-router-dom";
 export default function HomeBeforeLogin() {
   const navigate = useNavigate();
   useEffect(() => {
-    const jwt = JSON.parse(localStorage.getItem("token"));
+    const jwt = localStorage.getItem("token");
     if (jwt) {
       navigate("/HomeAfterLogin");
     }

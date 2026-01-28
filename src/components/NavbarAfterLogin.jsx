@@ -1,7 +1,7 @@
 import bookBookmark from "../assets/images/book-bookmark 1.png";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function Navbar() {
+export default function NavbarAfterLogin() {
   const navigate = useNavigate();
 
   return (

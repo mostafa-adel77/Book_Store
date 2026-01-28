@@ -48,7 +48,7 @@ export default function RegisterPage() {
   });
 
   useEffect(() => {
-    const jwt = JSON.parse(localStorage.getItem("token"));
+    const jwt = localStorage.getItem("token");
     if (jwt) {
       navigate("/HomeAfterLogin");
     }

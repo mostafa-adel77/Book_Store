@@ -1,15 +1,15 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import Navbar from "./Navbar";
 import { useState } from "react";
 import { FaBars } from "react-icons/fa";
+import NavbarBeforeLogin from "./NavbarBeforeLogin";
 
-export default function Header() {
+export default function HeaderBeforeLogin() {
   const navigate = useNavigate();
   const [BarsOpen, setBarsOpen] = useState(false);
   return (
     <header className="relative w-full py-6 bg-[#FFFFFF33] px-3">
       <div className="container mx-auto flex justify-between items-center text-white">
-        <Navbar />
+        <NavbarBeforeLogin />
 
         <div className="hidden md:flex gap-5">
           <button

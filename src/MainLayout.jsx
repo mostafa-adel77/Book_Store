@@ -1,11 +1,11 @@
 import { Outlet } from "react-router-dom";
-import HeroSection from "./components/HeroSection";
 import Footer from "./components/Footer";
+import HeroSectionBeforeLogin from "./components/HeroSectionBeforeLogin";
 
 export default function MainLayout() {
   return (
     <>
-      <HeroSection />
+      <HeroSectionBeforeLogin />
       <main className="w-full ">
         <Outlet />
       </main>

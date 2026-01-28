@@ -7,7 +7,6 @@ import axios from "axios";
 import toast from "react-hot-toast";
 import { useEffect } from "react";
 export default function LoginPage() {
-  const tokenLocal = localStorage.getItem("token");
   const navigate = useNavigate();
   const url = "https://bookstore.eraasoft.pro/api/login";
   const values = {
@@ -24,7 +23,9 @@ export default function LoginPage() {
       .post(url, dataSend)
       .then((res) => {
         const token = res.data.data.token;
-        localStorage.setItem("token", JSON.stringify(token));
+        const user = JSON.stringify(res.data.data.user);
+        localStorage.setItem("token", token);
+        localStorage.setItem("user", user);
         toast.success("Login successful");
         navigate("/HomeAfterLogin");
       })
@@ -34,7 +35,7 @@ export default function LoginPage() {
       });
   };
   useEffect(() => {
-    const jwt = JSON.parse(localStorage.getItem("token"));
+    const jwt = localStorage.getItem("token");
     if (jwt) {
       navigate("/HomeAfterLogin");
     }

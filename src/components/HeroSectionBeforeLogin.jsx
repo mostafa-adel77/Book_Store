@@ -1,7 +1,7 @@
 import { FaMicrophone, FaSearch } from "react-icons/fa";
-import Header from "./Header";
+import HeaderBeforeLogin from "./HeaderBeforeLogin";
 
-export default function HeroSection() {
+export default function HeroSectionBeforeLogin() {
   return (
     <section className="relative w-full h-120 md:h-150 bg-[url('/library.png')] bg-cover bg-center">
       <div className="container mx-auto flex justify-center">
@@ -10,7 +10,7 @@ export default function HeroSection() {
 
         {/* Header*/}
         <div className="absolute top-0 left-0 w-full z-30">
-          <Header />
+          <HeaderBeforeLogin />
         </div>
         {/* Search */}
         <div className="absolute w-80 lg:w-134 pt-70 z-20">
