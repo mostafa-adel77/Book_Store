@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
 export default function LoginPage() {
   const navigate = useNavigate();
   const url = "https://bookstore.eraasoft.pro/api/login";
@@ -34,12 +33,7 @@ export default function LoginPage() {
         navigate("/register");
       });
   };
-  useEffect(() => {
-    const jwt = localStorage.getItem("token");
-    if (jwt) {
-      navigate("/HomeAfterLogin");
-    }
-  }, []);
+
 
   const validationSchema = Yup.object({
     email: Yup.string()

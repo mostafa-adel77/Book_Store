@@ -1,15 +1,9 @@
-import BestSeller from "../components/BestSeller";
-import RecomendedForYou from "../components/RecomendedForYou";
-import FlashSale from "../components/FlashSale";
+import { LiaShippingFastSolid } from "react-icons/lia";
 import credit from "../assets/images/credit-card-buyer 1.png";
 import vector from "../assets/images/Vector.png";
 import vector1 from "../assets/images/Vector (1).png";
-import { LiaShippingFastSolid } from "react-icons/lia";
-import HeroSectionHomeAfterLogin from "../components/HeroSectionHomeAfterLogin";
-export default function HomeAfterLogin() {
+export default function TraksHome() {
   return (
-    <>
-      <HeroSectionHomeAfterLogin />
       <section className="w-full flex justify-center bg-creamy">
         <div className="container">
           <div className="w-full py-30 pl-15 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-13 text-black">
@@ -56,9 +50,5 @@ export default function HomeAfterLogin() {
           </div>
         </div>
       </section>
-      <BestSeller />
-      <RecomendedForYou />
-      <FlashSale />
-    </>
-  );
+  )
 }

@@ -5,7 +5,6 @@ import * as Yup from "yup";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
 export default function RegisterPage() {
   const navigate = useNavigate();
   const url = "https://bookstore.eraasoft.pro/api/register";
@@ -20,7 +19,6 @@ export default function RegisterPage() {
     axios
       .post(url, dataSend)
       .then((res) => {
-        console.log(res);
         toast.success("Register successful");
         navigate("/login");
       })
@@ -47,12 +45,6 @@ export default function RegisterPage() {
       .required("Confirm your password"),
   });
 
-  useEffect(() => {
-    const jwt = localStorage.getItem("token");
-    if (jwt) {
-      navigate("/HomeAfterLogin");
-    }
-  }, []);
   return (
     <>
       <section className="bg-creamy flex flex-col items-center">

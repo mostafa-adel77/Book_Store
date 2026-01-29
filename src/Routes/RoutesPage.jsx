@@ -8,6 +8,10 @@ import ResetPassword from "../pages/ResetPassword";
 import MainLayout from "../MainLayout";
 import HomeBeforeLogin from "../pages/HomeBeforeLogin";
 import HomeAfterLogin from "../pages/HomeAfterLogin";
+import MainLayoutAfterLogin from "../MainLayoutAfterLogin";
+import ProfilePage from "../pages/ProfilePage";
+import WishlistPage from "../pages/wishlistPage";
+import CartPage from "../pages/CartPage";
 
 export default function RoutesPage() {
   return (
@@ -20,9 +24,14 @@ export default function RoutesPage() {
         <Route path="resetPassword" element={<ResetPassword />} />
       </Route>
 
-      <Route path="HomeAfterLogin" element={<HomeAfterLogin />} />
-      <Route path="books" element={<BooksPage />} />
-      <Route path="aboutus" element={<AboutPage />} />
+      <Route path="/HomeAfterLogin" element={<MainLayoutAfterLogin />}>
+        <Route index element={<HomeAfterLogin />} />
+        <Route path="books" element={<BooksPage />} />
+        <Route path="aboutus" element={<AboutPage />} />
+        <Route path="profile" element={<ProfilePage />} />
+        <Route path="cart" element={<CartPage />} />
+        <Route path="wishlist" element={<WishlistPage />} />
+      </Route>
     </Routes>
   );
 }
